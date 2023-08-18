@@ -9,7 +9,7 @@ namespace _125_MusicLibraryWebApi.Models
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public string Genre { get; set; }
     }
 }
