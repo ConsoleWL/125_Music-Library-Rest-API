@@ -10,5 +10,30 @@ namespace _125_MusicLibraryWebApi.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Song>().HasData(
+            new Song
+            {
+                Id = 4,
+                Title = "The Golden Age",
+                Artist = "Beck",
+                Album = "Sea Change",
+                ReleaseDate = DateTime.Now,
+                Genre = "Alternative"
+            },
+            new Song
+            {
+                Id = 5,
+                Title = "TestTitle",
+                Artist = "TestBeck",
+                Album = "TestSea Change",
+                ReleaseDate = DateTime.Now,
+                Genre = "TestAlternative"
+            });
+        }
     }
 }
