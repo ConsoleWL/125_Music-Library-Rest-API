@@ -17,7 +17,7 @@ namespace _125_MusicLibraryWebApi.Controllers
             _context = context;
         }
 
-        
+
         [HttpGet]
         public IActionResult SongsGetAll()
         {
@@ -85,6 +85,18 @@ namespace _125_MusicLibraryWebApi.Controllers
             return NoContent();
         }
 
-        
+        [HttpPut("{id}/like")]
+        public IActionResult SongLike(int id)
+        {
+            var song = _context.Songs.Where(s => s.Id == id).SingleOrDefault();
+
+            if (song is null)
+                return NotFound();
+
+            song.Like++; // same thing can be done with dislike + add if checkif song has 0 like is it can't go lower
+            _context.SaveChanges();
+            return StatusCode(200, song);
+            
+        }
     }
 }
